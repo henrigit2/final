@@ -8,6 +8,8 @@
 #include <netinet/in.h>
 #include <unistd.h>
 #include <memory>
+#include "../entities/Icmp.h"
+
 
 
 
@@ -74,6 +76,14 @@ void Server::sendServer(char *buffer){
 }
 
 void Server::pingServer(){
+    Icmp pkt;
+
+    pkt.type = 0;
+
+    char *d;
+
+    encode(d, pkt);
+
     while(true){
 
         //unique_ptr<Server> server(new Server);

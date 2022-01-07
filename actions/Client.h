@@ -8,6 +8,7 @@
 #include <netinet/in.h>
 #include <unistd.h>
 #include <memory>
+#include "../entities/Icmp.h"
 
 
 
@@ -61,6 +62,14 @@ void Client::sendClient(char *buffer){
 }
 
 void Client::pingClient(){
+    Icmp pkt;
+
+    pkt.type = 8;
+
+    char *d;
+
+    encode(d, pkt);
+
     while(true){
 
         //unique_ptr<Client> client(new Client);
